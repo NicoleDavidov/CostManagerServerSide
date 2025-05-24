@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const connectDB = require('./config/db');
+connectDB(); // קראי לפונקציה כדי להתחבר לבסיס הנתונים
+
+
 var app = express();
 
 // view engine setup
