@@ -13,6 +13,9 @@ connectDB(); // קראי לפונקציה כדי להתחבר לבסיס הנת�
 
 var app = express();
 
+const connectDB = require('./config/db');
+connectDB(); // קראי לפונקציה כדי להתחבר לבסיס הנתונים
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
