@@ -10,11 +10,7 @@ var usersRouter = require('./routes/users');
 const connectDB = require('./config/db');
 connectDB(); // קראי לפונקציה כדי להתחבר לבסיס הנתונים
 
-
 var app = express();
-
-const connectDB = require('./config/db');
-connectDB(); // קראי לפונקציה כדי להתחבר לבסיס הנתונים
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
