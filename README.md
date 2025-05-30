@@ -1,2 +1,0 @@
-# CostManagerServerSideProject
-CostManager ServerSide Project
