@@ -21,7 +21,7 @@ const addCostItem = async (req, res) => {
         const costMonth = month || currentDate.getMonth() + 1;
         const costYear = year || currentDate.getFullYear();
 
-        const newCost = new Cost({
+        const newCost = new Cost({ // Create a new cost item using the request body
             userid,
             description,
             category,

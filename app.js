@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const costRoutes = require('./routes/costRoutes');
-//const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes');
 const aboutRoute = require('./routes/aboutRoute');
 
 const app = express();
@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
 
 // שימוש בראוטים
 app.use('/api', costRoutes);
-//app.use('/api', userRoutes);
+app.use('/api', userRoutes);
 app.use('/api', aboutRoute);
 
 module.exports = app;

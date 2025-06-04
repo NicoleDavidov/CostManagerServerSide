@@ -20,7 +20,7 @@ const costSchema = new Schema({
         type: String,
         required: true
     },
-    //לבדוק אם כדאי לנו לשים ID או לא
+
     category: {
         type: String,
         enum: ['food', 'health', 'housing', 'sport', 'education'],
