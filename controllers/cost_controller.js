@@ -1,6 +1,15 @@
 const Cost = require('../models/Cost');
 const User = require('../models/User');
 
+function isValidDate(day, month, year) {
+    const date = new Date(year, month - 1, day);
+    return (
+        date.getFullYear() === year &&
+        date.getMonth() === month - 1 &&
+        date.getDate() === day
+    );
+}
+
 const addCostItem = async (req, res) => {
     try {
         const { userid, description, category, sum, day, month, year } = req.body;
@@ -15,11 +24,16 @@ const addCostItem = async (req, res) => {
             return res.status(404).json({ error: 'User not found.' });
         }
 
-
         const currentDate = new Date();  // Use the current date as default if no date is given
         const costDay = day || currentDate.getDate();
         const costMonth = month || currentDate.getMonth() + 1;
         const costYear = year || currentDate.getFullYear();
+
+        if (day && month && year) {
+            if (!isValidDate(costDay, costMonth, costYear)) {
+                return res.status(400).json({ error: 'Invalid date provided' });
+            }
+        }
 
         const newCost = new Cost({ // Create a new cost item using the request body
             userid,

@@ -31,7 +31,7 @@ const costSchema = new Schema({
         required: true,
         min: 0
     },
-    day: { //צריך בהמשך להוסיף בדיקת תקינות תאריך
+    day: {
         type: Number,
         required: true
     },
