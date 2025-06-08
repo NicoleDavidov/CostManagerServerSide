@@ -1,4 +1,5 @@
 const Cost = require('../models/Cost');
+const User = require('../models/User');
 
 /**
  * @async
@@ -10,6 +11,7 @@ const Cost = require('../models/Cost');
 
 const getMonthlyReport = async (req, res) => {
     try {
+
         const { id, year, month } = req.query; // Extract user ID, year, and month from the query parameters in the URL
 
         if (!id || !year || !month) {  //Validate that all required query parameters (id, year, month) are provided
@@ -19,6 +21,20 @@ const getMonthlyReport = async (req, res) => {
         const userId = parseInt(id);
         const reportYear = parseInt(year);
         const reportMonth = parseInt(month);
+
+        if (isNaN(userId) || isNaN(reportYear) || isNaN(reportMonth)) {
+            return res.status(400).json({ error: 'Query parameters id, year, and month must be valid numbers' });
+        }
+
+
+        if (reportMonth < 1 || reportMonth > 12) {  // Check if month is in valid range
+            return res.status(400).json({ error: 'Month must be a number between 1 and 12' });
+        }
+
+        const userExists = await User.findOne({ id: Number(id) });
+        if (!userExists) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
 
         const costs = await Cost.find({ // View the user's expenses by month and year
             userid: userId,
