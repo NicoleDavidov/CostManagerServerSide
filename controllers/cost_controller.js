@@ -22,9 +22,9 @@ function isValidDate(day, month, year) {
 /**
  * @async
  * @function addCostItem
- * @description Adds a new cost item for a given user. Validates required fields and sets current date if not provided.
+ * @description Adds a new cost item for a given user.Validates required fields and sets current date if not provided.
  * @param {Object} req - Express request object
- * @param {Object} req.body - Request body with: userid (number), description (string), category (string), sum (number), and optional day, month, year (numbers)
+ * @param {Object} req.body - Request body with:userid,description,category,sum,and optional day,month,year
  * @param {Object} res - Express response object
  * @returns {Promise<Object>} JSON with the saved cost or an error message
  */
