@@ -5,7 +5,7 @@ filename = input("filename=")
 output = open(filename, "w")
 sys.stdout = output
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://costmanagerserversideproject.onrender.com"
 
 print("======== STARTING UNIT TESTS ========")
 
