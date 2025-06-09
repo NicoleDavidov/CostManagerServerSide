@@ -1,6 +1,15 @@
 const Cost = require('../models/Cost');
 const User = require('../models/User');
 
+/**
+ * @file cost_controller.js
+ * Checks if a given combination of day, month, and year is a valid calendar date.
+ * @param {number} day - Day of the month
+ * @param {number} month - Month (1-12)
+ * @param {number} year - Year (e.g., 2025)
+ * @returns {boolean} True if the date is valid, otherwise false
+ */
+
 function isValidDate(day, month, year) {
     const date = new Date(year, month - 1, day);
     return (
@@ -9,6 +18,16 @@ function isValidDate(day, month, year) {
         date.getDate() === day
     );
 }
+
+/**
+ * @async
+ * @function addCostItem
+ * @description Adds a new cost item for a given user. Validates required fields and sets current date if not provided.
+ * @param {Object} req - Express request object
+ * @param {Object} req.body - Request body with: userid (number), description (string), category (string), sum (number), and optional day, month, year (numbers)
+ * @param {Object} res - Express response object
+ * @returns {Promise<Object>} JSON with the saved cost or an error message
+ */
 
 const addCostItem = async (req, res) => {
     try {

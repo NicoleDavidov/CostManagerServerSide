@@ -2,11 +2,15 @@ const Cost = require('../models/Cost');
 const User = require('../models/User');
 
 /**
+ * @file report_controller.js
  * @async
  * @function getMonthlyReport
+ * @description Retrieves a monthly cost report for a given user, grouped by category.
+ *              Each category will include a list of costs or be empty if no costs exist.
  * @param {Object} req - Express request object
+ * @param {Object} req.query - Query parameters: id (user ID), year, month
  * @param {Object} res - Express response object
- * @returns {Object} JSON document with grouped costs by category for a specific user and month/year
+ * @returns {Object} JSON object with userid, year, month, and grouped costs by category
  */
 
 const getMonthlyReport = async (req, res) => {
@@ -14,7 +18,7 @@ const getMonthlyReport = async (req, res) => {
 
         const { id, year, month } = req.query; // Extract user ID, year, and month from the query parameters in the URL
 
-        if (!id || !year || !month) {  //Validate that all required query parameters (id, year, month) are provided
+        if (!id || !year || !month) {  //Validate that all required query parameters are provided
             return res.status(400).json({ error: 'Missing required query parameters: id, year, or month' });
         }
 
@@ -22,7 +26,7 @@ const getMonthlyReport = async (req, res) => {
         const reportYear = parseInt(year);
         const reportMonth = parseInt(month);
 
-        if (isNaN(userId) || isNaN(reportYear) || isNaN(reportMonth)) {
+        if (isNaN(userId) || isNaN(reportYear) || isNaN(reportMonth)) { // Ensure the query parameters are valid numbers.
             return res.status(400).json({ error: 'Query parameters id, year, and month must be valid numbers' });
         }
 
@@ -42,8 +46,8 @@ const getMonthlyReport = async (req, res) => {
             month: reportMonth
         });
 
-        // categories of costs
-        const categories = ['food', 'health', 'housing', 'sport', 'education'];
+
+        const categories = ['food', 'health', 'housing', 'sport', 'education']; // categories of costs
 
         const groupedCosts = categories.map(category => ({
             [category]: []

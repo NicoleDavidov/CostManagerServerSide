@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Cost = require('../models/Cost');
 
 /**
+ * @file user_controller.js
  * @async
  * @function getUserById
  * @param {Object} req - Express request object

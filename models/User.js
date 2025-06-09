@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /**
+ * @file User.js
  * @typedef {Object} User
  * @property {number} id - The unique ID of the user
  * @property {string} first_name - The user's first name

@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 /**
+ * @file userRoute.js
  * GET /api/users/:id
- * Route to get user info and total expenses
+ * @description Route to get user info and total expenses
  */
 
 const { getUserById } = require('../controllers/user_controller');

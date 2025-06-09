@@ -27,9 +27,9 @@ try:
     url = f"{BASE_URL}/api/add"
     payload = {
         "userid": 123123,
-        "description": "testing bread",
+        "description": "apple",
         "category": "food",
-        "sum": 25,
+        "sum": 5,
         "day": 8,
         "month": 6,
         "year": 2025
@@ -62,9 +62,9 @@ print("\nTESTING /api/add (invalid category)")
 try:
     payload = {
         "userid": 123123,
-        "description": "bad category",
+        "description": "unexpected category",
         "category": "vacation",
-        "sum": 50,
+        "sum":100,
         "day": 8,
         "month": 6,
         "year": 2025
@@ -82,7 +82,7 @@ payload = {
     "description": "invalid date",
     "category": "food",
     "sum": 10,
-    "day": 32,
+    "day": 50,
     "month": 13,
     "year": 2025
 }
@@ -136,7 +136,7 @@ except Exception as e:
 
 print("\nTESTING /api/report (non-existing user)")
 try:
-    url = f"{BASE_URL}/api/report?id=999999&year=2025&month=6"
+    url = f"{BASE_URL}/api/report?id=000000&year=2025&month=6"
     response = requests.get(url)
     print("URL:", url)
     print("Status Code:", response.status_code)
@@ -155,7 +155,7 @@ except Exception as e:
     print("ERROR:", e)
 
 print("\nTESTING /api/report (invalid type for month)")
-url = f"{BASE_URL}/api/report?id=123123&year=2025&month=June"
+url = f"{BASE_URL}/api/report?id=123123&year=2025&month=April"
 try:
     response = requests.get(url)
     print("URL:", url)
@@ -176,9 +176,9 @@ try:
 except Exception as e:
     print("ERROR:", e)
 
-print("\nTESTING /api/users/999999 (non-existing user)")
+print("\nTESTING /api/users/000000 (non-existing user)")
 try:
-    url = f"{BASE_URL}/api/users/999999"
+    url = f"{BASE_URL}/api/users/000000"
     response = requests.get(url)
     print("URL:", url)
     print("Status Code:", response.status_code)

@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 /**
+ * @file aboutRoute.js
  * @route GET /api/about
  * @description Returns a list of the developers' first and last names
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
  * @returns {Object[]} JSON array of developer objects
  */
 

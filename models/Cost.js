@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /**
+ * @file Cost.js
  * @typedef {Object} Cost
  * @property {number} userid - ID of the user
  * @property {string} description - Description of the cost
@@ -23,13 +24,13 @@ const costSchema = new Schema({
 
     category: {
         type: String,
-        enum: ['food', 'health', 'housing', 'sport', 'education'],
+        enum: ['food', 'health', 'housing', 'sport', 'education'], // Allows only specific values for the 'category' field
         required: true
     },
     sum: {
         type: Number,
         required: true,
-        min: 0
+        min: 0 // Sets the minimum allowed value for the sum
     },
     day: {
         type: Number,
@@ -39,7 +40,7 @@ const costSchema = new Schema({
         type: Number,
         required: true,
         min: 1,
-        max: 12
+        max: 12 // Ensures the month field can only be a number between 1 and 12
     },
     year: {
         type: Number,
