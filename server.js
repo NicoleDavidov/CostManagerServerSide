@@ -5,6 +5,7 @@ const app = require('./app');
 const PORT = process.env.PORT || 3000;
 
 /**
+ * @file server.js
  * Establish a connection to MongoDB Atlas and start the Express server.
  * If the connection is successful, the server will listen on the specified port.
  * If the connection fails, an error will be logged.
